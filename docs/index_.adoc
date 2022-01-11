@@ -1,0 +1,31 @@
+= browserwindowlayout
+:toc:
+
+>can go back to https://github.com/kazurayam/browserwindowlayout
+
+== Sample codes
+
+
+=== Launch Multiple Chrome windows in Tiling layout
+
+[source, groovy]
+----
+include::../src/test/groovy/examples/LaunchMultipleChromeWindowsInTilingLayout.groovy[]
+----
+
+Here is a https://drive.google.com/file/d/1sx57ywf4yVqNO4sCHZ8FWsBcHTz9jo9G/view?usp=sharing[demonstration movie].
+
+image:images/10_LaunchMultipleChromeWindowsInTilingLayout.png[]
+
+=== Launch Multiple Chrome windows in Stacking layout
+
+[source, groovy]
+----
+include::../src/test/groovy/examples/LaunchMultipleChromeWindowsInStackingLayout.groovy[]
+----
+
+== Problem to solve
+
+== Solution
+
+== Description
