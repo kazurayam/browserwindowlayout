@@ -11,9 +11,6 @@
     import com.kazurayam.browserwindowlayout.BrowserWindowLayoutManager
     import com.kazurayam.browserwindowlayout.TilingWindowLayoutMetrics
 
-    import com.kazurayam.webdriverfactory.UserProfile
-    import com.kazurayam.webdriverfactory.chrome.ChromeDriverFactory
-    import com.kazurayam.webdriverfactory.chrome.LaunchedChromeDriver
     import io.github.bonigarcia.wdm.WebDriverManager
     import org.junit.BeforeClass
     import org.junit.Test
@@ -24,20 +21,19 @@
         @Test
         void test_open2windows_in_tiling_layout() {
             TilingWindowLayoutMetrics layoutMetrics = new TilingWindowLayoutMetrics.Builder(2).build()
-            ChromeDriverFactory factory = ChromeDriverFactory.newChromeDriverFactory()
-            LaunchedChromeDriver launched0 = factory.newChromeDriver(new UserProfile("Picasso"))
-            BrowserWindowLayoutManager.layout(launched0.getDriver(),
+            ChromeDriver driver0 = new ChromeDriver()
+            ChromeDriver driver1 = new ChromeDriver()
+            BrowserWindowLayoutManager.layout(driver0,
                     layoutMetrics.getWindowPosition(0),
                     layoutMetrics.getWindowDimension(0))
-            LaunchedChromeDriver launched1 = factory.newChromeDriver(new UserProfile("Gogh"))
-            BrowserWindowLayoutManager.layout(launched1.getDriver(),
+            BrowserWindowLayoutManager.layout(driver1,
                     layoutMetrics.getWindowPosition(1),
                     layoutMetrics.getWindowDimension(1))
-            launched0.getDriver().navigate().to("https://en.wikipedia.org/wiki/Pablo_Picasso")
-            launched1.getDriver().navigate().to("https://en.wikipedia.org/wiki/Vincent_van_Gogh")
+            driver0.navigate().to("https://en.wikipedia.org/wiki/Pablo_Picasso")
+            driver1.navigate().to("https://en.wikipedia.org/wiki/Vincent_van_Gogh")
             Thread.sleep(1000)
-            launched0.getDriver().quit()
-            launched1.getDriver().quit()
+            driver0.quit()
+            driver1.quit()
         }
 
         @BeforeClass
@@ -57,9 +53,6 @@ Here is a [demonstration movie](https://drive.google.com/file/d/1sx57ywf4yVqNO4s
 
     import com.kazurayam.browserwindowlayout.BrowserWindowLayoutManager
     import com.kazurayam.browserwindowlayout.StackingWindowLayoutMetrics
-    import com.kazurayam.webdriverfactory.UserProfile
-    import com.kazurayam.webdriverfactory.chrome.ChromeDriverFactory
-    import com.kazurayam.webdriverfactory.chrome.LaunchedChromeDriver
     import io.github.bonigarcia.wdm.WebDriverManager
     import org.junit.BeforeClass
     import org.junit.Test
@@ -76,20 +69,19 @@ Here is a [demonstration movie](https://drive.google.com/file/d/1sx57ywf4yVqNO4s
                             .windowDimension(new Dimension(1000, 600))
                             .disposition(new Point(400, 200))
                             .build()
-            ChromeDriverFactory factory = ChromeDriverFactory.newChromeDriverFactory()
-            LaunchedChromeDriver launched0 = factory.newChromeDriver(new UserProfile("Picasso"))
-            BrowserWindowLayoutManager.layout(launched0.getDriver(),
+            ChromeDriver driver0 = new ChromeDriver()
+            BrowserWindowLayoutManager.layout(driver0,
                     layoutMetrics.getWindowPosition(0),
                     layoutMetrics.getWindowDimension(0))
-            LaunchedChromeDriver launched1 = factory.newChromeDriver(new UserProfile("Gogh"))
-            BrowserWindowLayoutManager.layout(launched1.getDriver(),
+            ChromeDriver driver1 = new ChromeDriver()
+            BrowserWindowLayoutManager.layout(driver1,
                     layoutMetrics.getWindowPosition(1),
                     layoutMetrics.getWindowDimension(1))
-            launched0.getDriver().navigate().to("https://en.wikipedia.org/wiki/Pablo_Picasso")
-            launched1.getDriver().navigate().to("https://en.wikipedia.org/wiki/Vincent_van_Gogh")
+            driver0.navigate().to("https://en.wikipedia.org/wiki/Pablo_Picasso")
+            driver1.navigate().to("https://en.wikipedia.org/wiki/Vincent_van_Gogh")
             Thread.sleep(1000)
-            launched0.getDriver().quit()
-            launched1.getDriver().quit()
+            driver0.quit()
+            driver1.quit()
         }
 
         @BeforeClass
