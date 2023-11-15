@@ -5,6 +5,10 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 
 public class StackingWindowLayoutMetrics extends WindowLayoutMetrics {
+
+    public static final StackingWindowLayoutMetrics DEFAULT =
+            new StackingWindowLayoutMetrics.Builder(8).build();
+
     private StackingWindowLayoutMetrics(Builder builder) {
         size = builder.size;
         windowDimension = builder.windowDimension;

@@ -7,6 +7,10 @@ import org.openqa.selenium.Point;
 import java.awt.*;
 
 public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
+
+    public static final TilingWindowLayoutMetrics DEFAULT =
+            new TilingWindowLayoutMetrics.Builder(8).build();
+
     private TilingWindowLayoutMetrics(Builder builder) {
         this.size = builder.size;
         virtualScreenSize = new Dimension(builder.physicalScreenSize.getWidth() - builder.basePoint.getX() * 2, builder.physicalScreenSize.getHeight() - builder.basePoint.getY() * 2);
@@ -82,6 +86,8 @@ public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{\"TilingWindowLayoutMetrics\":{");
+        sb.append("\"size\":" + getSize());
+        sb.append(",");
         sb.append("\"virtualScreenSize\":[" + String.valueOf(getVirtualScreenSize().getWidth()) + "," + String.valueOf(getVirtualScreenSize().getHeight()) + "]");
         sb.append(",");
         sb.append("\"basePoint\":[" + String.valueOf(getBasePoint().getX()) + "," + String.valueOf(getBasePoint().getY()) + "]");

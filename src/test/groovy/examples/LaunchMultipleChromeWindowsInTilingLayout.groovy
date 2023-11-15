@@ -12,7 +12,8 @@ class LaunchMultipleChromeWindowsInTilingLayout {
 
     @Test
     void test_open2windows_in_tiling_layout() {
-        TilingWindowLayoutMetrics layoutMetrics = new TilingWindowLayoutMetrics.Builder(2).build()
+        TilingWindowLayoutMetrics layoutMetrics =
+                new TilingWindowLayoutMetrics.Builder(2).build()
         ChromeDriver driver0 = new ChromeDriver()
         ChromeDriver driver1 = new ChromeDriver()
         BrowserWindowLayoutManager.layout(driver0,
