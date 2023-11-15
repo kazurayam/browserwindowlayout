@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'com.kazurayam'
-version '0.1.0-SNAPSHOT'
+version '0.1.0'
 
 ext.isReleaseVersion = ! version.endsWith("SNAPSHOT")
 
@@ -24,7 +24,7 @@ ext {
     groovyVersion = '2.4.21'
     slf4jVersion = '1.7.25'
     selenium3Version = '3.141.59'
-    webdrivermanagerVersion = '5.0.3'
+    webdrivermanagerVersion = '5.6.2'
     junitVersion = '4.12'
 }
 
