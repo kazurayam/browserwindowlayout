@@ -8,12 +8,14 @@ plugins {
 }
 
 group 'com.kazurayam'
-version '0.1.0'
+version '0.2.0'
 
 ext.isReleaseVersion = ! version.endsWith("SNAPSHOT")
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+base {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
 
 def defaultEncoding = 'UTF-8'
 tasks.withType(AbstractCompile).each {
@@ -46,7 +48,6 @@ dependencies {
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "${selenium3Version}"
     testImplementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: "${webdrivermanagerVersion}"
     testImplementation group: 'junit', name: 'junit', version: "${junitVersion}"
-
 }
 
 test {
