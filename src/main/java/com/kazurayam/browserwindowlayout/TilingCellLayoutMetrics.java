@@ -6,12 +6,12 @@ import org.openqa.selenium.Point;
 
 import java.awt.*;
 
-public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
+public class TilingCellLayoutMetrics extends CellLayoutMetrics {
 
-    public static final TilingWindowLayoutMetrics DEFAULT =
-            new TilingWindowLayoutMetrics.Builder(8).build();
+    public static final TilingCellLayoutMetrics DEFAULT =
+            new TilingCellLayoutMetrics.Builder(2).build();
 
-    private TilingWindowLayoutMetrics(Builder builder) {
+    private TilingCellLayoutMetrics(Builder builder) {
         this.columns = builder.columns;
         this.size = builder.size;
         virtualScreenSize = new Dimension(
@@ -36,9 +36,9 @@ public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
     }
 
     @Override
-    public Dimension getWindowDimension(final int windowIndex) {
-        if (windowIndex < 0 || windowIndex >= this.size) {
-            throw new IllegalArgumentException("windowIndex=" + windowIndex + " must not be <0 and >=size");
+    public Dimension getCellDimension(final int cellIndex) {
+        if (cellIndex < 0 || cellIndex >= this.size) {
+            throw new IllegalArgumentException("windowIndex=" + cellIndex + " must not be <0 and >=size");
         }
         if (size == 1) {
             return virtualScreenSize;
@@ -51,15 +51,15 @@ public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
     }
 
     @Override
-    public Point getWindowPosition(final int windowIndex) {
-        if (windowIndex < 0 || windowIndex >= this.size) {
+    public Point getCellPosition(final int cellIndex) {
+        if (cellIndex < 0 || cellIndex >= this.size) {
             throw new IllegalArgumentException("windowIndex=" +
-                    String.valueOf(windowIndex) + " must not be <0 and >=size");
+                    String.valueOf(cellIndex) + " must not be <0 and >=size");
         }
-        int x = basePoint.getX() + (windowIndex % this.columns) * this.getWindowDimension(windowIndex).getWidth();
+        int x = basePoint.getX() + (cellIndex % this.columns) * this.getCellDimension(cellIndex).getWidth();
 
         int y = (int) ((int) basePoint.getY() +
-                Math.floor((double) windowIndex / this.columns) * this.getWindowDimension(windowIndex).getHeight());
+                Math.floor((double) cellIndex / this.columns) * this.getCellDimension(cellIndex).getHeight());
 
         return new Point(x, y);
     }
@@ -70,11 +70,11 @@ public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
             return true;
         }
 
-        if (!(o instanceof TilingWindowLayoutMetrics)) {
+        if (!(o instanceof TilingCellLayoutMetrics)) {
             return false;
         }
 
-        TilingWindowLayoutMetrics other = (TilingWindowLayoutMetrics) o;
+        TilingCellLayoutMetrics other = (TilingCellLayoutMetrics) o;
         return this.virtualScreenSize.equals(other.getVirtualScreenSize()) &&
                 this.basePoint.equals(other.getBasePoint());
     }
@@ -90,13 +90,23 @@ public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{\"TilingWindowLayoutMetrics\":{");
-        sb.append("\"columns\":" + getColumns());
-        sb.append("\"size\":" + getSize());
+        sb.append("{\"TilingCellLayoutMetrics\":{");
+        sb.append("\"columns\":");
+        sb.append(getColumns());
+        sb.append("\"size\":");
+        sb.append(getSize());
         sb.append(",");
-        sb.append("\"virtualScreenSize\":[" + String.valueOf(getVirtualScreenSize().getWidth()) + "," + String.valueOf(getVirtualScreenSize().getHeight()) + "]");
+        sb.append("\"virtualScreenSize\":[");
+        sb.append(getVirtualScreenSize().getWidth());
         sb.append(",");
-        sb.append("\"basePoint\":[" + String.valueOf(getBasePoint().getX()) + "," + String.valueOf(getBasePoint().getY()) + "]");
+        sb.append(getVirtualScreenSize().getHeight());
+        sb.append("]");
+        sb.append(",");
+        sb.append("\"basePoint\":[");
+        sb.append(getBasePoint().getX());
+        sb.append(",");
+        sb.append(getBasePoint().getY());
+        sb.append("]");
         sb.append("}}");
         return sb.toString();
     }
@@ -111,11 +121,11 @@ public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
      */
     public static class Builder {
         public Builder(final int columns, final int size) {
-            if (size <= 0) {
-                throw new IllegalArgumentException("columns=" + String.valueOf(columns) + " must not be <=0");
+            if (columns <= 0) {
+                throw new IllegalArgumentException("columns=" + columns + " must not be <=0");
             }
             if (size <= 0) {
-                throw new IllegalArgumentException("size=" + String.valueOf(size) + " must not be <=0");
+                throw new IllegalArgumentException("size=" + size + " must not be <=0");
             }
             this.columns = columns;
             this.size = size;
@@ -135,14 +145,14 @@ public class TilingWindowLayoutMetrics extends WindowLayoutMetrics {
             return this;
         }
 
-        public TilingWindowLayoutMetrics build() {
-            return new TilingWindowLayoutMetrics(this);
+        public TilingCellLayoutMetrics build() {
+            return new TilingCellLayoutMetrics(this);
         }
 
-        private int size;
-        private int columns;
-        private java.awt.Dimension ss = Toolkit.getDefaultToolkit().getScreenSize();
+        private final int size;
+        private final int columns;
+        private final java.awt.Dimension ss = Toolkit.getDefaultToolkit().getScreenSize();
         private Dimension physicalScreenSize = new Dimension((int) ss.getWidth(), (int) ss.getHeight());
-        private Point basePoint = new Point(10, 10);
+        private Point basePoint = new Point(0, 0);
     }
 }

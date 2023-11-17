@@ -11,28 +11,28 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4.class)
-class StackingWindowLayoutMetricsTest {
+class StackingCellLayoutMetricsTest {
 
-    StackingWindowLayoutMetrics layoutMetrics
+    StackingCellLayoutMetrics layoutMetrics
     int NUM_OF_WINDOWS = 3
 
     @Before
     void setup() {
-        layoutMetrics = new StackingWindowLayoutMetrics.Builder(NUM_OF_WINDOWS)
-                .windowDimension(new Dimension(1280, 1024)).build()
+        layoutMetrics = new StackingCellLayoutMetrics.Builder(NUM_OF_WINDOWS)
+                .cellDimension(new Dimension(1280, 1024)).build()
     }
 
 
     @Test
-    void test_getWindowDimension() {
-        assertEquals(1280, layoutMetrics.getWindowDimension(0).width)
-        assertEquals(1024, layoutMetrics.getWindowDimension(0).height)
+    void test_getCellDimension() {
+        assertEquals(1280, layoutMetrics.getCellDimension(0).width)
+        assertEquals(1024, layoutMetrics.getCellDimension(0).height)
     }
 
     @Test
-    void test_getWindowsPosition() {
+    void test_getCellPosition() {
         for (index in 0..2) {
-            Point pos = layoutMetrics.getWindowPosition(index)
+            Point pos = layoutMetrics.getCellPosition(index)
             assertEquals(layoutMetrics.getDisposition().x * index, pos.x)
             assertEquals(layoutMetrics.getDisposition().y * index, pos.y)
         }

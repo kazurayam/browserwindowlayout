@@ -39,7 +39,7 @@ This library support two ways of window layout:
     package examples
 
     import com.kazurayam.browserwindowlayout.BrowserWindowLayoutManager
-    import com.kazurayam.browserwindowlayout.TilingWindowLayoutMetrics
+    import com.kazurayam.browserwindowlayout.TilingCellLayoutMetrics
 
     import io.github.bonigarcia.wdm.WebDriverManager
     import org.junit.BeforeClass
@@ -81,7 +81,7 @@ Here is a [demonstration movie](https://drive.google.com/file/d/1sx57ywf4yVqNO4s
     package examples
 
     import com.kazurayam.browserwindowlayout.BrowserWindowLayoutManager
-    import com.kazurayam.browserwindowlayout.StackingWindowLayoutMetrics
+    import com.kazurayam.browserwindowlayout.StackingCellLayoutMetrics
     import io.github.bonigarcia.wdm.WebDriverManager
     import org.junit.BeforeClass
     import org.junit.Test
