@@ -1,6 +1,6 @@
 package examples
 
-
+import com.kazurayam.browserwindowlayout.BrowserWindowLayoutManager
 import com.kazurayam.browserwindowlayout.TilingCellLayoutMetrics
 
 import io.github.bonigarcia.wdm.WebDriverManager
@@ -8,7 +8,7 @@ import org.junit.BeforeClass
 import org.junit.Test
 import org.openqa.selenium.chrome.ChromeDriver
 
-class LaunchMultipleChromeWindowsInTilingLayout {
+class LaunchMultipleChromeWindowsInTilingLayoutTest {
 
     @Test
     void test_open2windows_in_tiling_layout() {

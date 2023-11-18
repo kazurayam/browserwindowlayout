@@ -1,6 +1,6 @@
 package examples
 
-
+import com.kazurayam.browserwindowlayout.BrowserWindowLayoutManager
 import com.kazurayam.browserwindowlayout.StackingCellLayoutMetrics
 import io.github.bonigarcia.wdm.WebDriverManager
 import org.junit.BeforeClass
@@ -9,7 +9,7 @@ import org.openqa.selenium.Dimension
 import org.openqa.selenium.Point
 import org.openqa.selenium.chrome.ChromeDriver
 
-class LaunchMultipleChromeWindowsInStackingLayout {
+class LaunchMultipleChromeWindowsInStackingLayoutTest {
 
     @Test
     void test_open2windows_in_stacking_layout() {
