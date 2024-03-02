@@ -38,7 +38,7 @@ image:images/20_LaunchMultipleChromeWindowsInStackingLayout.png[]
 
 [source, groovy]
 ----
-include::../src/test/groovy/examples/LaunchMultipleChromeWindowsInTilingLayout.groovy[]
+include::../src/test/groovy/examples/LaunchMultipleChromeWindowsInTilingLayoutTest.groovy[]
 ----
 
 Here is a https://drive.google.com/file/d/1sx57ywf4yVqNO4sCHZ8FWsBcHTz9jo9G/view?usp=sharing[demonstration movie].
@@ -48,7 +48,7 @@ Here is a https://drive.google.com/file/d/1sx57ywf4yVqNO4sCHZ8FWsBcHTz9jo9G/view
 
 [source, groovy]
 ----
-include::../src/test/groovy/examples/LaunchMultipleChromeWindowsInStackingLayout.groovy[]
+include::../src/test/groovy/examples/LaunchMultipleChromeWindowsInStackingLayoutTest.groovy[]
 ----
 
 
