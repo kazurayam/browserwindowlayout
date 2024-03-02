@@ -8,12 +8,14 @@ plugins {
 }
 
 group 'com.kazurayam'
-version '0.1.0-SNAPSHOT'
+version '0.3.1'
 
 ext.isReleaseVersion = ! version.endsWith("SNAPSHOT")
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+base {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
 
 def defaultEncoding = 'UTF-8'
 tasks.withType(AbstractCompile).each {
@@ -22,9 +24,9 @@ tasks.withType(AbstractCompile).each {
 
 ext {
     groovyVersion = '2.4.21'
-    slf4jVersion = '1.7.25'
+    slf4jVersion = '2.0.9'
     selenium3Version = '3.141.59'
-    webdrivermanagerVersion = '5.0.3'
+    webdrivermanagerVersion = '5.6.2'
     junitVersion = '4.12'
 }
 
@@ -41,12 +43,11 @@ dependencies {
     implementation "org.codehaus.groovy:groovy-all:${groovyVersion}"
     generateDocs "org.codehaus.groovy:groovy-all:${groovyVersion}"
     implementation "org.slf4j:slf4j-api:${slf4jVersion}"
-    implementation group: 'org.slf4j', name: 'slf4j-simple', version: "${slf4jVersion}"
+    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: "${slf4jVersion}"
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "${selenium3Version}"
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "${selenium3Version}"
     testImplementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: "${webdrivermanagerVersion}"
     testImplementation group: 'junit', name: 'junit', version: "${junitVersion}"
-
 }
 
 test {
