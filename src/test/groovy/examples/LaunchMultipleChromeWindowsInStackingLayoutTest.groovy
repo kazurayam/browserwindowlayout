@@ -8,6 +8,7 @@ import org.junit.Test
 import org.openqa.selenium.Dimension
 import org.openqa.selenium.Point
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
 
 class LaunchMultipleChromeWindowsInStackingLayoutTest {
 
@@ -18,11 +19,13 @@ class LaunchMultipleChromeWindowsInStackingLayoutTest {
                         .cellDimension(new Dimension(1000, 600))
                         .disposition(new Point(400, 200))
                         .build()
-        ChromeDriver driver0 = new ChromeDriver()
+        ChromeOptions options = new ChromeOptions()
+        options.setExperimentalOption("excludeSwitches", ["enable-automation"]);
+        ChromeDriver driver0 = new ChromeDriver(options)
         BrowserWindowLayoutManager.layout(driver0,
                 layoutMetrics.getCellPosition(0),
                 layoutMetrics.getCellDimension(0))
-        ChromeDriver driver1 = new ChromeDriver()
+        ChromeDriver driver1 = new ChromeDriver(options)
         BrowserWindowLayoutManager.layout(driver1,
                 layoutMetrics.getCellPosition(1),
                 layoutMetrics.getCellDimension(1))
